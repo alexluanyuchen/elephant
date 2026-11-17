@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101a17" />
+  <meta name="description" content="Elephant Dream AI - 将你的照片变成与大象的梦幻合影" />
+  <title>Elephant Dream AI · AI 合影工作室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">ED</span><span>ELEPHANT <b>DREAM</b><small>AI PHOTO STUDIO</small></span></a>
+    <div class="top-status"><span class="status-dot"></span> AI STUDIO <span class="version">v1.0</span></div>
+  </header>
+
+  <main class="shell">
+    <section class="intro">
+      <div class="eyebrow"><span>✦</span> YOUR MOMENT, REIMAGINED</div>
+      <h1>与你的大象<span>梦幻合影</span></h1>
+      <p>上传一张照片，让 AI 为你创造一张自然、温暖、值得珍藏的合影。</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel editor-panel">
+        <div class="panel-heading"><div><span class="step">01</span><h2>上传你的照片</h2></div><span class="subtle">YOUR PORTRAIT</span></div>
+        <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+        <button class="upload-zone" id="uploadZone" type="button" aria-label="选择照片">
+          <div class="upload-icon">↑</div>
+          <strong id="uploadTitle">点击选择一张照片</strong>
+          <span id="uploadHint">JPG、PNG 或 WEBP · 最大 12 MB</span>
+          <span class="upload-cta">选择照片 <span>↗</span></span>
+          <img id="sourcePreview" alt="上传照片预览" hidden />
+        </button>
+        <div class="section-label"><span class="step">02</span><h2>选择合影场景</h2></div>
+        <div class="scene-grid" role="group" aria-label="选择场景">
+          <button class="scene-card selected" data-scene="forest" type="button"><span class="scene-art forest-art">🌿</span><span>热带森林</span><i>✓</i></button>
+          <button class="scene-card" data-scene="savanna" type="button"><span class="scene-art savanna-art">🌅</span><span>非洲草原</span><i>✓</i></button>
+          <button class="scene-card" data-scene="flowers" type="button"><span class="scene-art flower-art">🌸</span><span>梦幻花海</span><i>✓</i></button>
+          <button class="scene-card" data-scene="sanctuary" type="button"><span class="scene-art sanctuary-art">🪷</span><span>大象保护园</span><i>✓</i></button>
+          <button class="scene-card" data-scene="studio" type="button"><span class="scene-art studio-art">📷</span><span>专业摄影棚</span><i>✓</i></button>
+        </div>
+        <label class="section-label prompt-label" for="extraPrompt"><span class="step">03</span><h2>添加创意描述 <small>选填</small></h2></label>
+        <textarea id="extraPrompt" maxlength="300" placeholder="例如：温暖的夕阳、自然微笑、电影感色调……"></textarea>
+        <button class="generate-btn" id="generateBtn" type="button"><span>✦</span> 生成我的大象合影 <b>→</b></button>
+        <p class="privacy-note">🔒 照片仅用于本次生成，不会保存在本网站服务器上。</p>
+      </div>
+
+      <div class="panel result-panel">
+        <div class="panel-heading"><div><span class="step">04</span><h2>你的 AI 合影</h2></div><span class="subtle">YOUR CREATION</span></div>
+        <div class="result-stage" id="resultStage">
+          <div class="empty-state" id="emptyState">
+            <div class="elephant-line">🐘</div>
+            <div class="empty-orbit orbit-a"></div><div class="empty-orbit orbit-b"></div>
+            <strong>美好合影，即将诞生</strong>
+            <span>上传照片并选择场景<br>你的专属大象合影将在这里呈现</span>
+          </div>
+          <div class="loading-state" id="loadingState" hidden>
+            <div class="loader-elephant">🐘</div><div class="loader-ring"></div>
+            <strong>正在创造你的合影</strong><span id="loadingText">AI 正在理解你的照片与场景…</span>
+            <div class="loading-bar"><i></i></div><small>通常需要几十秒，请不要关闭页面</small>
+          </div>
+          <img id="resultImage" alt="AI 生成的大象合影" hidden />
+        </div>
+        <div class="result-footer">
+          <div class="result-caption"><strong id="resultTitle">等待你的第一张作品</strong><span id="resultMeta">ELEPHANT DREAM AI</span></div>
+          <button class="download-btn" id="downloadBtn" type="button" disabled>↓ <span>保存图片</span></button>
+        </div>
+        <div class="tip-box"><span>✧</span><p><b>小贴士</b> 选择光线清晰、人物面部无遮挡的照片，通常更容易得到自然的合影效果。</p></div>
+      </div>
+    </section>
+    <footer><span>ELEPHANT DREAM AI</span><span>Made for beautiful memories · 2026</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
